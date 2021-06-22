@@ -1,0 +1,31 @@
+.content_wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  height: 400px;
+}
+.content {
+  width: 60%;
+  float:left;
+  height: 100%;
+
+  background-color: red;
+}
+.side-panel {
+  overflow: hidden;
+  height: 100%;
+
+  background-color: green;
+}
+
+.last-searched-panel-box{
+  min-height: 200px;
+
+  background-color: yellow;
+}
+
+.ads-panel-box{
+  min-height: 200px;
+
+  background-color: purple;
+}

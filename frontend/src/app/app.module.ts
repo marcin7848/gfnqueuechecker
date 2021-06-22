@@ -9,6 +9,8 @@ import {NgcCookieConsentConfig, NgcCookieConsentModule} from "ngx-cookieconsent"
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import { LastSearchedComponent } from './components/last-searched/last-searched.component';
+import { AdsComponent } from './components/ads/ads.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -29,7 +31,9 @@ const cookieConfig:NgcCookieConsentConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LastSearchedComponent,
+    AdsComponent
   ],
   imports: [
     BrowserModule,

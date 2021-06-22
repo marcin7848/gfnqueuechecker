@@ -1,3 +1,16 @@
 <app-header></app-header>
 
-<router-outlet></router-outlet>
+<div class="content_wrapper">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="side-panel">
+    <div class="last-searched-panel-box">
+      <app-last-searched></app-last-searched>
+    </div>
+    <div class="ads-panel-box">
+      <app-ads></app-ads>
+    </div>
+  </div>
+</div>
+
