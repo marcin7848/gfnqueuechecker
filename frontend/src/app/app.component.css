@@ -1,21 +1,45 @@
-.content_wrapper {
-  width: 100%;
-  overflow: hidden;
+@media only screen and (min-width: 600px) {
+  .content_wrapper {
+    width: 100%;
+    overflow: hidden;
 
-  height: 400px;
+    height: 400px;
+  }
+
+  .content {
+    width: 60%;
+    float: left;
+    height: 100%;
+
+    background-color: red;
+  }
+
+  .side-panel {
+    overflow: hidden;
+    height: 100%;
+
+    background-color: green;
+  }
 }
-.content {
-  width: 60%;
-  float:left;
-  height: 100%;
 
-  background-color: red;
-}
-.side-panel {
-  overflow: hidden;
-  height: 100%;
+@media only screen and (max-width: 600px) {
+  .content_wrapper {
+    width: 100%;
 
-  background-color: green;
+    height: 400px;
+  }
+
+  .content {
+    height: 100%;
+
+    background-color: red;
+  }
+
+  .side-panel {
+    height: 100%;
+    background-color: green;
+  }
+
 }
 
 .last-searched-panel-box{
@@ -29,3 +53,5 @@
 
   background-color: purple;
 }
+
+
