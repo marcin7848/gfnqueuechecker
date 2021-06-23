@@ -36,4 +36,8 @@ public class Server {
     @JsonBackReference
     private ServerGroup serverGroup;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "server")
+    @JsonBackReference
+    private List<CheckQueue> checkQueue;
+
 }

@@ -47,6 +47,11 @@ public class CheckQueue {
     @JoinColumn(name = "game_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    @JsonBackReference
     private Game game;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "server_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
+    private Server server;
 }
