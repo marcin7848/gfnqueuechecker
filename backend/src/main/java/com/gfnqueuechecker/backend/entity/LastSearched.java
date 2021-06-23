@@ -34,7 +34,7 @@ public class LastSearched {
     @JoinColumn(name = "game_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    @JsonBackReference
+
     private Game game;
 
 }
