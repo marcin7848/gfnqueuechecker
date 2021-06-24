@@ -16,6 +16,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatLineModule} from "@angular/material/core";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import {MatCardModule} from "@angular/material/card";
+import { SettingsComponent } from './components/settings/settings.component';
+import { SearchComponent } from './components/search/search.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -39,7 +41,9 @@ const cookieConfig:NgcCookieConsentConfig = {
     HeaderComponent,
     LastSearchedComponent,
     AdsComponent,
-    DateAgoPipe
+    DateAgoPipe,
+    SettingsComponent,
+    SearchComponent
   ],
     imports: [
         HttpClientModule,
