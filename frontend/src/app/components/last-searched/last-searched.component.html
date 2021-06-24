@@ -1,1 +1,9 @@
-<p>last-searched works!</p>
+<mat-list>
+  <div mat-subheader>Folders</div>
+  <mat-list-item *ngFor="let ls of lastSearched">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <div mat-line>{{ls.game.gameName}}</div>
+    <div mat-line> {{ls.searchTime | dateAgo}} </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

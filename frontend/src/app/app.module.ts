@@ -12,6 +12,9 @@ import {MatButtonModule} from "@angular/material/button";
 import { LastSearchedComponent } from './components/last-searched/last-searched.component';
 import { AdsComponent } from './components/ads/ads.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatListModule} from "@angular/material/list";
+import {MatLineModule} from "@angular/material/core";
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -34,7 +37,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     AppComponent,
     HeaderComponent,
     LastSearchedComponent,
-    AdsComponent
+    AdsComponent,
+    DateAgoPipe
   ],
   imports: [
     HttpClientModule,
@@ -44,7 +48,9 @@ const cookieConfig:NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatLineModule
   ],
   providers: [],
   bootstrap: [AppComponent]

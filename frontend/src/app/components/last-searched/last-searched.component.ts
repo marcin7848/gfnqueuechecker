@@ -18,7 +18,6 @@ export class LastSearchedComponent implements OnInit {
       .subscribe(
         data => {
           this.lastSearched = data;
-          console.log(this.lastSearched);
         },
         error => {
 
