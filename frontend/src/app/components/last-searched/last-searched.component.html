@@ -1,9 +1,11 @@
-<mat-list>
-  <div mat-subheader>Folders</div>
-  <mat-list-item *ngFor="let ls of lastSearched">
-    <mat-icon mat-list-icon>folder</mat-icon>
-    <div mat-line>{{ls.game.gameName}}</div>
-    <div mat-line> {{ls.searchTime | dateAgo}} </div>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+<mat-card class="last-searched-card">
+  <mat-list>
+    <div mat-subheader><h2>Last Searched</h2></div>
+    <mat-list-item *ngFor="let ls of lastSearched">
+      <img mat-list-avatar src="{{ls.game.coverImg}}" alt="" class="last-search-cover-img">
+      <div mat-line class="last-searched-game-title">{{ls.game.gameName}}</div>
+      <div mat-line class="last-searched-search-time"> {{ls.searchTime | dateAgo}} </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
 import {MatLineModule} from "@angular/material/core";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import {MatCardModule} from "@angular/material/card";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -40,18 +41,19 @@ const cookieConfig:NgcCookieConsentConfig = {
     AdsComponent,
     DateAgoPipe
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NgcCookieConsentModule.forRoot(cookieConfig),
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatListModule,
-    MatLineModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NgcCookieConsentModule.forRoot(cookieConfig),
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatListModule,
+        MatLineModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
