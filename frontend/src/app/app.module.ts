@@ -11,6 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { LastSearchedComponent } from './components/last-searched/last-searched.component';
 import { AdsComponent } from './components/ads/ads.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -36,6 +37,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     AdsComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
