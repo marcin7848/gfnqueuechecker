@@ -1,1 +1,7 @@
-<p>settings-servers works!</p>
+<mat-form-field class="server-group-field" appearance="fill">
+  <mat-label>Server group name</mat-label>
+  <input matInput type="text" [(ngModel)]="serverGroupName">
+</mat-form-field>
+
+<button mat-raised-button color="primary" class="settings-save-button" (click)="addNewServerGroup()"
+        [disabled]="this.submitted">Add new</button>

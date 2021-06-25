@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfigService} from "../../services/config.service";
 import {Config} from "../../model/Config";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {GlobalService} from "../../global/global.service";
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +15,7 @@ export class SettingsComponent implements OnInit {
   xDeviceIdValue: string = "";
   submitted = false;
 
-  constructor(private configService: ConfigService, private _snackBar: MatSnackBar) { }
+  constructor(private configService: ConfigService, private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.configService.getConfigsForSettings()
@@ -41,23 +41,14 @@ export class SettingsComponent implements OnInit {
     this.configService.editSettings(newConfigs).subscribe(
       result => {
         this.submitted = false;
-        this.openSnackBar("Saved!", 2);
+        this.globalService.openSnackBar("Saved!", 2);
       },
       error => {
         this.submitted = false;
-        this.openSnackBar("Error! " + error["error"]["error"], 10);
+        this.globalService.openSnackBar("Error! " + error["error"]["error"], 10);
       }
     );
 
-  }
-
-  openSnackBar(message: string, seconds: number) {
-    this._snackBar.open(message, 'OK', {
-      horizontalPosition: "center",
-      verticalPosition: "top",
-      duration: seconds * 1000,
-      panelClass: ['snackbar']
-    });
   }
 
 }

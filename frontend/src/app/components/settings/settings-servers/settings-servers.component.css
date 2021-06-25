@@ -1,0 +1,16 @@
+.server-group-field{
+  min-width: 300px;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .settings-save-button{
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .settings-save-button{
+    margin-bottom: 5px;
+  }
+}

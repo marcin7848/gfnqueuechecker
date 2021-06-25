@@ -1,6 +1,7 @@
 package com.gfnqueuechecker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,10 +35,12 @@ public class Server {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "server_group_id")
     @JsonBackReference
+    @JsonIgnore
     private ServerGroup serverGroup;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "server")
     @JsonBackReference
+    @JsonIgnore
     private List<CheckQueue> checkQueue;
 
 }

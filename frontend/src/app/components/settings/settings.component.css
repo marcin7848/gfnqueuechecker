@@ -20,5 +20,11 @@
   }
 
   .settings-field-margin{}
-  .settings-save-button{}
+  .settings-save-button{
+    margin-bottom: 15px;
+  }
+}
+
+.settings-divider{
+  margin-top: 15px;
 }
