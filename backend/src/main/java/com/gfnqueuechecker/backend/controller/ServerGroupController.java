@@ -25,7 +25,7 @@ public class ServerGroupController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> editSettings(@RequestBody ServerGroup serverGroup) {
+    public ResponseEntity<?> addNew(@RequestBody ServerGroup serverGroup) {
         ServerGroup newServerGroup = serverGroupService.addNew(serverGroup);
         if (newServerGroup == null) {
             return ErrorMessage.send("The server group has not been added! Error!", HttpStatus.BAD_REQUEST);
