@@ -45,7 +45,7 @@ export class SettingsComponent implements OnInit {
       },
       error => {
         this.submitted = false;
-        this.openSnackBar("Error!" + error["error"]["error"], 10);
+        this.openSnackBar("Error! " + error["error"]["error"], 10);
       }
     );
 
