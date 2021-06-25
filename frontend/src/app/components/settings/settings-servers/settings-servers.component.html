@@ -8,7 +8,11 @@
 
 <mat-list>
   <ng-container *ngFor="let serverGroup of serverGroups">
-    <mat-list-item>{{serverGroup.serverGroupName}}</mat-list-item>
+    <mat-list-item>{{serverGroup.serverGroupName}}
+      <button matSuffix mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
     <mat-divider></mat-divider>
   </ng-container>
 </mat-list>
