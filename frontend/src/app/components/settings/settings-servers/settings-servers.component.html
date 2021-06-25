@@ -5,3 +5,10 @@
 
 <button mat-raised-button color="primary" class="settings-save-button" (click)="addNewServerGroup()"
         [disabled]="this.submitted">Add new</button>
+
+<mat-list>
+  <ng-container *ngFor="let serverGroup of serverGroups">
+    <mat-list-item>{{serverGroup.serverGroupName}}</mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

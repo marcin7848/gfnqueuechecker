@@ -13,10 +13,18 @@ export class SettingsServersComponent implements OnInit {
 
   serverGroupName: string = "";
   submitted = false;
+  serverGroups: ServerGroup[] = [];
 
   constructor(private serverGroupService: ServerGroupService, private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    this.serverGroupService.getAll()
+      .subscribe(
+        data => {
+          this.serverGroups = data;
+        },
+        error => {
+        });
   }
 
   addNewServerGroup(){
