@@ -18,6 +18,10 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 import {MatCardModule} from "@angular/material/card";
 import { SettingsComponent } from './components/settings/settings.component';
 import { SearchComponent } from './components/search/search.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -45,19 +49,23 @@ const cookieConfig:NgcCookieConsentConfig = {
     SettingsComponent,
     SearchComponent
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        NgcCookieConsentModule.forRoot(cookieConfig),
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatListModule,
-        MatLineModule,
-        MatCardModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatLineModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSnackBarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

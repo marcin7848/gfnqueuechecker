@@ -10,4 +10,5 @@ import java.util.List;
 public interface ConfigRepository extends CrudRepository<Config, Long> {
 
     List<Config> findAll();
+    Config getConfigByConfigName(String configName);
 }

@@ -48,4 +48,8 @@
   background-color: purple;
 }
 
+::ng-deep .snackbar{
+  background: #3a3d3b;
+  color: #FFF;
+}
 

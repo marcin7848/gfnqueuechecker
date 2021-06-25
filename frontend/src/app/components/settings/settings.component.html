@@ -1,3 +1,23 @@
 <div>
-  test
+  <h2>Settings</h2>
+  <mat-form-field class="settings-field" appearance="fill">
+    <mat-label>Authorization</mat-label>
+    <input matInput type="text" [(ngModel)]="authorizationValue">
+    <button *ngIf="authorizationValue" matSuffix mat-icon-button aria-label="Clear"
+            (click)="authorizationValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="settings-field settings-field-margin" appearance="fill">
+    <mat-label>X-Device-Id</mat-label>
+    <input matInput type="text" [(ngModel)]="xDeviceIdValue">
+    <button *ngIf="xDeviceIdValue" matSuffix mat-icon-button aria-label="Clear"
+            (click)="xDeviceIdValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="settings-save-button" (click)="editSettings()"
+          [disabled]="this.submitted">Save</button>
 </div>
