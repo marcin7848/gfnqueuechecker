@@ -21,4 +21,7 @@ export class ServerGroupService {
     return this.http.post<ServerGroup>(this.baseHttp + 'add', serverGroup);
   }
 
+  delete(id: number) {
+    return this.http.delete(this.baseHttp + id + '/delete');
+  }
 }

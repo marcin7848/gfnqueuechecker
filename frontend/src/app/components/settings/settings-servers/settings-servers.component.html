@@ -6,10 +6,12 @@
 <button mat-raised-button color="primary" class="settings-save-button" (click)="addNewServerGroup()"
         [disabled]="this.submitted">Add new</button>
 
+<p *ngIf="serverGroups.length == 0">There are no Server Groups! Add some above!</p>
+
 <mat-list>
   <ng-container *ngFor="let serverGroup of serverGroups">
     <mat-list-item>{{serverGroup.serverGroupName}}
-      <button matSuffix mat-icon-button>
+      <button matSuffix mat-icon-button (click)="deleteServerGroup(serverGroup.id)" >
         <mat-icon>delete</mat-icon>
       </button>
     </mat-list-item>
