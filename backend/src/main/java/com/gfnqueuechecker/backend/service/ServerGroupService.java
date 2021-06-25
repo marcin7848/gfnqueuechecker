@@ -23,4 +23,12 @@ public class ServerGroupService {
         return serverGroupRepository.save(serverGroup);
     }
 
+    public ServerGroup getById(Long id){
+        return serverGroupRepository.findById(id).orElse(null);
+    }
+
+    public void delete(ServerGroup serverGroup){
+        serverGroupRepository.delete(serverGroup);
+    }
+
 }
