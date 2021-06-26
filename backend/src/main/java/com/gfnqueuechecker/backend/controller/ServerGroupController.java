@@ -77,7 +77,7 @@ public class ServerGroupController {
 
     @DeleteMapping("/{serverGroupId}/server/{id}/delete")
     public ResponseEntity<?> delete(@PathVariable("serverGroupId") Long serverGroupId, @PathVariable("id") Long id) {
-        ServerGroup serverGroup = serverGroupService.getById(id);
+        ServerGroup serverGroup = serverGroupService.getById(serverGroupId);
         if (serverGroup == null) {
             return ErrorMessage.send("The server group does not exist! Error!", HttpStatus.BAD_REQUEST);
         }
@@ -86,7 +86,7 @@ public class ServerGroupController {
             return ErrorMessage.send("The server does not exist! Error!", HttpStatus.BAD_REQUEST);
         }
 
-        serverService.delete(server);
+        serverService.delete(serverGroup, server);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }

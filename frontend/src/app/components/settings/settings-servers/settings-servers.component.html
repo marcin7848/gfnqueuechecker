@@ -37,6 +37,15 @@
         <mat-icon>delete</mat-icon>
       </button>
     </mat-list-item>
+    <mat-list style="margin-left:30px;">
+      <div *ngFor="let server of serverGroup.servers">
+        <mat-list-item>{{ server.serverName }}
+          <button matSuffix mat-icon-button (click)="deleteServer(serverGroup.id, server.id)" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </div>
+    </mat-list>
     <mat-divider></mat-divider>
   </ng-container>
 </mat-list>

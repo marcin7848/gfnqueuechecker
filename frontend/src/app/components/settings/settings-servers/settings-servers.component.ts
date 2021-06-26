@@ -87,5 +87,25 @@ export class SettingsServersComponent implements OnInit {
     );
   }
 
+  deleteServer(serverGroupId: number, serverId: number){
+    let serverGroupIndex = this.serverGroups.findIndex(sg => sg.id == serverGroupId);
+
+    if(serverGroupIndex == -1){
+      this.globalService.openSnackBar("Server group id is not correct!", 4);
+      this.submitted = false;
+      return;
+    }
+
+    this.serverGroups[serverGroupIndex].servers = this.serverGroups[serverGroupIndex].servers.filter(s => s.id != serverId);
+
+    this.serverGroupService.deleteServer(serverGroupId, serverId).subscribe(
+      result => {
+        this.globalService.openSnackBar("Deleted!", 2);
+      },
+      error => {
+        this.globalService.openSnackBar("Error! " + error["error"]["error"], 10);
+      }
+    );
+  }
 
 }
