@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ServerGroupService} from "../../../services/server-group.service";
 import {ServerGroup} from "../../../model/ServerGroup";
 import {GlobalService} from "../../../global/global.service";
-import {Server} from "../../../model/Server";
 
 @Component({
   selector: 'app-settings-servers',
