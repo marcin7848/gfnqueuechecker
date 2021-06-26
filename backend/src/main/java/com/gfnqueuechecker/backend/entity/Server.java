@@ -34,12 +34,10 @@ public class Server {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "server_group_id")
-    @JsonBackReference
     @JsonIgnore
     private ServerGroup serverGroup;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "server")
-    @JsonBackReference
     @JsonIgnore
     private List<CheckQueue> checkQueue;
 

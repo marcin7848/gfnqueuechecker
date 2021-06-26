@@ -13,7 +13,7 @@ import { LastSearchedComponent } from './components/last-searched/last-searched.
 import { AdsComponent } from './components/ads/ads.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
-import {MatLineModule} from "@angular/material/core";
+import {MatLineModule, MatOptionModule} from "@angular/material/core";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import {MatCardModule} from "@angular/material/card";
 import { SettingsComponent } from './components/settings/settings.component';
@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { SettingsServersComponent } from './components/settings/settings-servers/settings-servers.component';
+import {MatSelectModule} from "@angular/material/select";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -66,7 +67,9 @@ const cookieConfig:NgcCookieConsentConfig = {
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

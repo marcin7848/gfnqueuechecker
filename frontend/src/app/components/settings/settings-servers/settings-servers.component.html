@@ -3,7 +3,29 @@
   <input matInput type="text" [(ngModel)]="serverGroupName">
 </mat-form-field>
 
-<button mat-raised-button color="primary" class="settings-save-button" (click)="addNewServerGroup()"
+<button mat-raised-button color="primary" class="settings-button" (click)="addNewServerGroup()"
+        [disabled]="this.submitted">Add new</button>
+
+<p></p>
+
+<mat-form-field class="server-group-field" appearance="fill">
+  <mat-label>Server name</mat-label>
+  <input matInput type="text" [(ngModel)]="serverName">
+</mat-form-field>
+
+<mat-form-field class="server-group-field server-group-field-margin" appearance="fill">
+  <mat-label>Server host</mat-label>
+  <input matInput type="text" [(ngModel)]="serverHost">
+</mat-form-field>
+
+<mat-form-field class="server-group-field server-group-field-margin" appearance="fill">
+  <mat-label>Server Group</mat-label>
+  <mat-select [(value)]="selectedServerGroup">
+    <mat-option [value]="sg.id" *ngFor="let sg of serverGroups">{{ sg.serverGroupName }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="primary" class="settings-button" (click)="addNewServer()"
         [disabled]="this.submitted">Add new</button>
 
 <p *ngIf="serverGroups.length == 0">There are no Server Groups! Add some above!</p>
