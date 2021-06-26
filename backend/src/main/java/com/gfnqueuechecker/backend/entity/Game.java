@@ -1,6 +1,7 @@
 package com.gfnqueuechecker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,9 +35,11 @@ public class Game {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
     @JsonBackReference
+    @JsonIgnore
     private List<LastSearched> lastSearched;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
     @JsonBackReference
+    @JsonIgnore
     private List<CheckQueue> checkQueue;
 }

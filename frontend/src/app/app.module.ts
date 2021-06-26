@@ -19,11 +19,12 @@ import {MatCardModule} from "@angular/material/card";
 import { SettingsComponent } from './components/settings/settings.component';
 import { SearchComponent } from './components/search/search.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { SettingsServersComponent } from './components/settings/settings-servers/settings-servers.component';
 import {MatSelectModule} from "@angular/material/select";
+import {GameComponent} from "./components/settings/game/game/game.component";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -50,27 +51,29 @@ const cookieConfig:NgcCookieConsentConfig = {
     DateAgoPipe,
     SettingsComponent,
     SearchComponent,
-    SettingsServersComponent
+    SettingsServersComponent,
+    GameComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NgcCookieConsentModule.forRoot(cookieConfig),
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatListModule,
-    MatLineModule,
-    MatCardModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatOptionModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NgcCookieConsentModule.forRoot(cookieConfig),
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatListModule,
+        MatLineModule,
+        MatCardModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatOptionModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,21 @@
+.game-field{
+  min-width: 300px;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .game-button{
+    margin-left: 10px;
+  }
+
+  .game-field{
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .game-button{
+    margin-bottom: 5px;
+  }
+  .game-field{}
+}
