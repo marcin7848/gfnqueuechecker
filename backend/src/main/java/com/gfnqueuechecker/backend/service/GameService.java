@@ -19,4 +19,8 @@ public class GameService {
         return this.gameRepository.save(game);
     }
 
+    public Game getByAppIdOrGameName(Long appId, String gameName){
+        return this.gameRepository.findByAppIdOrGameName(appId, gameName);
+    }
+
 }

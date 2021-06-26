@@ -29,6 +29,10 @@ public class GameController {
             return ErrorMessage.send("Fill in all fields! Error!", HttpStatus.BAD_REQUEST);
         }
 
+        if(this.gameService.getByAppIdOrGameName(game.getAppId(), game.getGameName()) != null){
+            return ErrorMessage.send("This game already exists!", HttpStatus.BAD_REQUEST);
+        }
+
         Game newGame = gameService.addNew(game);
         if (newGame == null) {
             return ErrorMessage.send("The game has not been added! Error!", HttpStatus.BAD_REQUEST);
