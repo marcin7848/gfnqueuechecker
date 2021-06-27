@@ -81,7 +81,7 @@ export class GameComponent implements OnInit {
     this.games = this.games.filter(s => s.id != id);
     this.dataSource = new MatTableDataSource(this.games);
 
-    /*
+
     this.gameService.delete(id).subscribe(
       result => {
         this.globalService.openSnackBar("Deleted!", 2);
@@ -89,7 +89,7 @@ export class GameComponent implements OnInit {
       error => {
         this.globalService.openSnackBar("Error! " + error["error"]["error"], 10);
       }
-    );*/
+    );
   }
 
 }

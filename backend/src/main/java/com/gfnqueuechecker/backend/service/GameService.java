@@ -27,4 +27,12 @@ public class GameService {
         return this.gameRepository.findAll();
     }
 
+    public void delete(Game game){
+        this.gameRepository.delete(game);
+    }
+
+    public Game getById(Long id){
+        return this.gameRepository.findById(id).orElse(null);
+    }
+
 }

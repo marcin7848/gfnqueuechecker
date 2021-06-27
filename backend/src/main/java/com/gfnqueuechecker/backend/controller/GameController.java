@@ -43,4 +43,14 @@ public class GameController {
         return new ResponseEntity<>(newGame, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        Game game = gameService.getById(id);
+        if (game == null) {
+            return ErrorMessage.send("The game does not exist! Error!", HttpStatus.BAD_REQUEST);
+        }
+        gameService.delete(game);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
 }
