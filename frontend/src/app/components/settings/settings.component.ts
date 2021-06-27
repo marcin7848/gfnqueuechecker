@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ConfigService} from "../../services/config.service";
 import {Config} from "../../model/Config";
 import {GlobalService} from "../../global/global.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings',
@@ -15,9 +16,13 @@ export class SettingsComponent implements OnInit {
   xDeviceIdValue: string = "";
   submitted = false;
 
-  constructor(private configService: ConfigService, private globalService: GlobalService) { }
+  constructor(private configService: ConfigService, private globalService: GlobalService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.globalService.isLogged()) {
+      this.router.navigate(['/']);
+    }
+
     this.configService.getConfigsForSettings()
       .subscribe(
         data => {
