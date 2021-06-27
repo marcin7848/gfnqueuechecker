@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GameService} from "../../../../services/game.service";
-import {ServerGroup} from "../../../../model/ServerGroup";
-import {GlobalService} from "../../../../global/global.service";
-import {Game} from "../../../../model/Game";
+import {GameService} from "../../../services/game.service";
+import {ServerGroup} from "../../../model/ServerGroup";
+import {GlobalService} from "../../../global/global.service";
+import {Game} from "../../../model/Game";
 import {FormControl, Validators} from "@angular/forms";
 
 @Component({
@@ -25,6 +25,13 @@ export class GameComponent implements OnInit {
   constructor(private gameService: GameService, private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    this.gameService.getAll()
+      .subscribe(
+        data => {
+          this.games = data;
+        },
+        error => {
+        });
   }
 
   addGame(){

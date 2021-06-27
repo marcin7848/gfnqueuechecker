@@ -23,4 +23,8 @@ public class GameService {
         return this.gameRepository.findByAppIdOrGameName(appId, gameName);
     }
 
+    public Iterable<Game> getAll(){
+        return this.gameRepository.findAll();
+    }
+
 }

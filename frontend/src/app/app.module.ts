@@ -24,7 +24,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { SettingsServersComponent } from './components/settings/settings-servers/settings-servers.component';
 import {MatSelectModule} from "@angular/material/select";
-import {GameComponent} from "./components/settings/game/game/game.component";
+import {GameComponent} from "./components/settings/game/game.component";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {

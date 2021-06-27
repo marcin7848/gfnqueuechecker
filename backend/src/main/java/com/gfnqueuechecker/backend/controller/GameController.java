@@ -6,10 +6,7 @@ import com.gfnqueuechecker.backend.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/game")
@@ -20,6 +17,11 @@ public class GameController {
     @Autowired
     public GameController(GameService gameService) {
         this.gameService = gameService;
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll(){
+        return new ResponseEntity<>(this.gameService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("/add")
