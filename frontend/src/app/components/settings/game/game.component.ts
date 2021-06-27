@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
   games: Game[] = [];
 
   appIdControl = new FormControl('', [
-    Validators.pattern('^[0-9]*$'),
+    Validators.pattern('^[0-9]*$')
   ]);
 
 

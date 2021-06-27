@@ -1,1 +1,30 @@
-<p>login works!</p>
+<h2>Login</h2>
+
+<mat-form-field class="login-field" appearance="fill">
+  <mat-label>Username</mat-label>
+  <input matInput type="text" [(ngModel)]="username" maxlength="30" [formControl]="usernameControl">
+  <mat-hint align="end">{{username.length}} / 30</mat-hint>
+  <mat-error *ngIf="usernameControl.hasError('pattern')">
+    Forbidden characters!
+  </mat-error>
+  <mat-error *ngIf="usernameControl.hasError('required')">
+    Username is required!
+  </mat-error>
+</mat-form-field>
+
+<p></p>
+
+<mat-form-field class="login-field" appearance="fill">
+  <mat-label>Password</mat-label>
+  <input matInput type="password" [(ngModel)]="password" maxlength="30" [formControl]="passwordControl">
+  <mat-hint align="end">{{password.length}} / 30</mat-hint>
+  <mat-error *ngIf="passwordControl.hasError('required')">
+    Password is required!
+  </mat-error>
+</mat-form-field>
+
+<p></p>
+
+<button mat-raised-button color="primary" (click)="login()"
+        [disabled]="this.submitted || usernameControl.hasError('pattern')
+        || usernameControl.hasError('required') || passwordControl.hasError('required')">Login</button>
