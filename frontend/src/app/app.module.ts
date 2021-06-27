@@ -28,6 +28,7 @@ import {GameComponent} from "./components/settings/game/game.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { LoginComponent } from './components/login/login.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -55,7 +56,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     SettingsComponent,
     SearchComponent,
     SettingsServersComponent,
-    GameComponent
+    GameComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,

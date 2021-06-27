@@ -1,6 +1,6 @@
 <p>
   <mat-toolbar color="primary">
-    <span>GFN Queue Checker</span>
+    <span [routerLink]="['/']">GFN Queue Checker</span>
     <span class="header-spacer"></span>
     <button mat-icon-button [routerLink]="['/settings']">
       <mat-icon>settings</mat-icon>
@@ -8,7 +8,7 @@
     <button mat-icon-button>
       <mat-icon>logout</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button [routerLink]="['/login']">
       <mat-icon>login</mat-icon>
     </button>
   </mat-toolbar>
