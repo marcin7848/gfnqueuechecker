@@ -28,11 +28,13 @@ public class AccountController {
             return ErrorMessage.send("User data are empty! Error!", HttpStatus.BAD_REQUEST);
         }
 
-        if(!this.accountService.verifyAccountExistence(account)){
+        Account existedAccount = this.accountService.verifyAccountExistence(account);
+
+        if(existedAccount == null){
             return ErrorMessage.send("Wrong user data! Error!", HttpStatus.BAD_REQUEST);
         }
 
-        String jwt = this.accountService.getJWTToken(account.getUsername());
+        String jwt = this.accountService.getJWTToken(existedAccount.getUsername(), existedAccount.getRole());
         JSONObject resp = new JSONObject();
         resp.put("Authorization", jwt);
 
