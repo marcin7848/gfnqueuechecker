@@ -28,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers("/account/login").permitAll()
+                .antMatchers("/game/getAll").permitAll()
+                .antMatchers("/lastSearched/*").permitAll()
+                .antMatchers("/serverGroup/getAll").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic().disable();
 
