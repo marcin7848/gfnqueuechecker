@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GameService} from "../../../services/game.service";
 import {ServerGroup} from "../../../model/ServerGroup";
 import {GlobalService} from "../../../global/global.service";
 import {Game} from "../../../model/Game";
 import {FormControl, Validators} from "@angular/forms";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-game',
@@ -22,6 +25,13 @@ export class GameComponent implements OnInit {
     Validators.pattern('^[0-9]*$'),
   ]);
 
+
+  displayedColumns: string[] = ['appId', 'gameName', 'coverImg', 'action'];
+  dataSource: MatTableDataSource<Game>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+
   constructor(private gameService: GameService, private globalService: GlobalService) { }
 
   ngOnInit(): void {
@@ -29,9 +39,21 @@ export class GameComponent implements OnInit {
       .subscribe(
         data => {
           this.games = data;
+          this.dataSource = new MatTableDataSource(this.games);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         },
         error => {
         });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   addGame(){
@@ -45,6 +67,7 @@ export class GameComponent implements OnInit {
       .subscribe(result => {
         this.submitted = false;
         this.games.push(result);
+        this.dataSource = new MatTableDataSource(this.games);
         this.globalService.openSnackBar("New game added!", 2);
       },
       error => {
@@ -52,6 +75,21 @@ export class GameComponent implements OnInit {
         this.globalService.openSnackBar("Error! " + error["error"]["error"], 10);
       }
     );
+  }
+
+  deleteGame(id: number){
+    this.games = this.games.filter(s => s.id != id);
+    this.dataSource = new MatTableDataSource(this.games);
+
+    /*
+    this.gameService.delete(id).subscribe(
+      result => {
+        this.globalService.openSnackBar("Deleted!", 2);
+      },
+      error => {
+        this.globalService.openSnackBar("Error! " + error["error"]["error"], 10);
+      }
+    );*/
   }
 
 }

@@ -18,3 +18,49 @@
 
 <button mat-raised-button color="primary" class="game-button" (click)="addGame()"
         [disabled]="this.submitted || appIdControl.hasError('pattern')">Add new</button>
+
+
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" recycleRows matSort>
+
+    <ng-container matColumnDef="appId">
+      <th class="settings-game-row" mat-header-cell *matHeaderCellDef mat-sort-header> App ID </th>
+      <td class="settings-game-row" mat-cell *matCellDef="let row"> {{row.appId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gameName">
+      <th class="settings-game-row" mat-header-cell *matHeaderCellDef mat-sort-header> Game Name </th>
+      <td class="settings-game-row" mat-cell *matCellDef="let row"> {{row.gameName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="coverImg">
+      <th class="settings-game-row" mat-header-cell *matHeaderCellDef mat-sort-header> Cover IMG </th>
+      <td class="settings-game-row" mat-cell *matCellDef="let row">
+        <img class="settings-game-cover-img" src="{{row.coverImg}}" alt=""/>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th class="settings-game-row" mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td class="settings-game-row" mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="deleteGame(row.id)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

@@ -20,4 +20,8 @@ export class GameService {
   addNew(game: Game): Observable<Game> {
     return this.http.post<Game>(this.baseHttp + 'add', game);
   }
+
+  delete(id: number) {
+    return this.http.delete(this.baseHttp + id + '/delete');
+  }
 }
