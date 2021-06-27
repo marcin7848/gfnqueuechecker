@@ -29,6 +29,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { LoginComponent } from './components/login/login.component';
+import {CookieService} from "ngx-cookie-service";
+import { LogoutComponent } from './components/logout/logout.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -57,7 +59,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     SearchComponent,
     SettingsServersComponent,
     GameComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     HttpClientModule,
@@ -82,7 +85,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     MatSortModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

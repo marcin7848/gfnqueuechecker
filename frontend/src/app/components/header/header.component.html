@@ -2,13 +2,13 @@
   <mat-toolbar color="primary">
     <span [routerLink]="['/']">GFN Queue Checker</span>
     <span class="header-spacer"></span>
-    <button mat-icon-button [routerLink]="['/settings']">
+    <button mat-icon-button [routerLink]="['/settings']" *ngIf="globalService.isLogged()">
       <mat-icon>settings</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button [routerLink]="['/logout']" *ngIf="globalService.isLogged()">
       <mat-icon>logout</mat-icon>
     </button>
-    <button mat-icon-button [routerLink]="['/login']">
+    <button mat-icon-button [routerLink]="['/login']" *ngIf="!globalService.isLogged()">
       <mat-icon>login</mat-icon>
     </button>
   </mat-toolbar>
