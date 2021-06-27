@@ -13,7 +13,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
 
 import static java.util.Collections.singletonList;
 
@@ -27,9 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity security) throws Exception
     {
-        security.httpBasic().disable()
+        security
                 .cors().configurationSource(corsConfigurationSource())
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/account/login").permitAll()
+                .anyRequest().authenticated()
+                .and().httpBasic().disable();
+
     }
 
     @Bean
@@ -60,4 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         + "where username=?")
                 .passwordEncoder(bCryptPasswordEncoder());
     }
+
+
+
 }
