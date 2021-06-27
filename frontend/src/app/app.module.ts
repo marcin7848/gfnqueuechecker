@@ -11,7 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { LastSearchedComponent } from './components/last-searched/last-searched.component';
 import { AdsComponent } from './components/ads/ads.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
 import {MatLineModule, MatOptionModule} from "@angular/material/core";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
@@ -31,6 +31,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { LoginComponent } from './components/login/login.component';
 import {CookieService} from "ngx-cookie-service";
 import { LogoutComponent } from './components/logout/logout.component';
+import {Interceptor} from "./app.interceptor";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -85,7 +86,12 @@ const cookieConfig:NgcCookieConsentConfig = {
     MatSortModule,
     MatPaginatorModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
