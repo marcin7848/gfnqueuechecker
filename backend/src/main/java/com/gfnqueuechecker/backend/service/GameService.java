@@ -3,6 +3,7 @@ package com.gfnqueuechecker.backend.service;
 import com.gfnqueuechecker.backend.entity.Game;
 import com.gfnqueuechecker.backend.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,6 @@ public class GameService {
     }
 
     public List<Game> getGamesByGameNameContaining(String gameName){
-        return this.gameRepository.findGamesByGameNameContainingIgnoreCase(gameName);
+        return this.gameRepository.findGamesByGameNameContainingIgnoreCase(gameName, PageRequest.of(0, 5));
     }
 }
