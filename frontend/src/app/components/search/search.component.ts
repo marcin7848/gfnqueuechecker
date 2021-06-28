@@ -4,9 +4,9 @@ import {Game} from "../../model/Game";
 import {ServerGroup} from "../../model/ServerGroup";
 import {ServerGroupService} from "../../services/server-group.service";
 import {CheckQueueService} from "../../services/check-queue.service";
-import {SearchKey} from "../../model/SearchKey";
 import {GlobalService} from "../../global/global.service";
 import {CheckQueue} from "../../model/CheckQueue";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -24,7 +24,8 @@ export class SearchComponent implements OnInit {
   checkQueues: CheckQueue[] = [];
 
   constructor(private gameService: GameService, private serverGroupService: ServerGroupService,
-              private checkQueueService: CheckQueueService, private globalService: GlobalService) { }
+              private checkQueueService: CheckQueueService, private globalService: GlobalService,
+              private router: Router) { }
 
   ngOnInit(): void {
 
@@ -60,8 +61,10 @@ export class SearchComponent implements OnInit {
 
     this.checkQueueService.generateCheckQueue(this.selectedGame.id).subscribe(
       data => {
-        this.searchKey = data.SearchKey;
-        setTimeout(this.processCheckQueue, 500);
+        this.searchKey = data.searchKey;
+        setTimeout(() => {
+          this.processCheckQueue(0);
+        }, 500);
 
       },
       error => {
@@ -69,7 +72,36 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  processCheckQueue(){
+  processCheckQueue(i: number){
+    if(i > 100){
+      this.globalService.openSnackBar("Can't get queues for all servers! Try again later!", 5);
+      setTimeout(() => {
+        this.router.navigate(['/']);
+      }, 5000)
+      return;
+    }
 
+    console.log(this.searchKey);
+
+    this.checkQueueService.getCheckQueuesBySearchKey(this.searchKey).subscribe(
+      data => {
+        this.checkQueues = data;
+
+
+        if(this.checkQueues.filter(cq => cq.process == 0 || cq.process == 1).length > 0){
+          setTimeout(() => {
+            this.processCheckQueue(++i);
+          }, 3000);
+        }
+      },
+      error => {
+        this.globalService.openSnackBar("Error! " + error["error"]["error"], 5);
+      });
   }
+
+  checkingDone(serverId: number): boolean{
+    return this.checkQueues.filter(cq => (cq.process == 2 || cq.process == 3) && cq.server.id == serverId).length > 0;
+  }
+
+
 }

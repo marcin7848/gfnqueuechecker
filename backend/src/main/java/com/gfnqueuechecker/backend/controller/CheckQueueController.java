@@ -42,9 +42,9 @@ public class CheckQueueController {
         }
 
         JSONObject resp = new JSONObject();
-        resp.put("SearchKey", searchKey);
+        resp.put("searchKey", searchKey);
 
-        return new ResponseEntity<>(resp, HttpStatus.OK);
+        return new ResponseEntity<>(resp.toString(), HttpStatus.OK);
     }
 
     @GetMapping("/get/searchKey/{searchKey}")

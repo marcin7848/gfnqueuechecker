@@ -19,9 +19,12 @@
     <mat-list style="margin-left:30px;">
       <div *ngFor="let server of serverGroup.servers">
         <mat-list-item>{{ server.serverName }}
-          <mat-progress-spinner matSuffix class="search-spinner" color="warn" mode="indeterminate"
-                                diameter="20">
-          </mat-progress-spinner>
+          <ng-container *ngIf="!checkingDone(server.id); else processDone" >
+            <mat-progress-spinner matSuffix class="search-spinner" color="warn" mode="indeterminate"
+                                  diameter="20">
+            </mat-progress-spinner>
+          </ng-container>
+          <ng-template #processDone>test</ng-template>
         </mat-list-item>
       </div>
     </mat-list>

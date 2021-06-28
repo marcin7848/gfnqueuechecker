@@ -1,3 +1,3 @@
 export interface SearchKey {
-  SearchKey: string;
+  searchKey: string;
 }
