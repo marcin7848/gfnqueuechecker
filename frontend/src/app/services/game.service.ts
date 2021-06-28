@@ -24,4 +24,8 @@ export class GameService {
   delete(id: number) {
     return this.http.delete(this.baseHttp + id + '/delete');
   }
+
+  getGamesByGameNameContaining(gameName: string): Observable<Game[]> {
+    return this.http.get<Game[]>(this.baseHttp + 'search/' + gameName);
+  }
 }

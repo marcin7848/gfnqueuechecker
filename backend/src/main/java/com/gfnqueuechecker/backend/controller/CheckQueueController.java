@@ -22,8 +22,5 @@ public class CheckQueueController {
         this.checkQueueService = checkQueueService;
     }
 
-    @GetMapping("/search/{gameName}")
-    public ResponseEntity<?> getGameByGameName(@PathVariable("gameName") String gameName) {
-        return new ResponseEntity<>(this.checkQueueService.getGamesByGameNameContaining(gameName), HttpStatus.OK);
-    }
+
 }

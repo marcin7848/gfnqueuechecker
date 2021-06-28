@@ -53,4 +53,9 @@ public class GameController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    @GetMapping("/search/{gameName}")
+    public ResponseEntity<?> getGameByGameName(@PathVariable("gameName") String gameName) {
+        return new ResponseEntity<>(this.gameService.getGamesByGameNameContaining(gameName), HttpStatus.OK);
+    }
+
 }

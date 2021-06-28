@@ -18,8 +18,4 @@ public class CheckQueueService {
         this.gameService = gameService;
     }
 
-    public List<Game> getGamesByGameNameContaining(String gameName){
-        return this.gameService.getByGameNameContaining(gameName);
-    }
-
 }

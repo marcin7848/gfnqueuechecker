@@ -37,7 +37,7 @@ public class GameService {
         return this.gameRepository.findById(id).orElse(null);
     }
 
-    public List<Game> getByGameNameContaining(String gameName){
+    public List<Game> getGamesByGameNameContaining(String gameName){
         return this.gameRepository.findGamesByGameNameContainingIgnoreCase(gameName);
     }
 }

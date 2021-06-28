@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/game/getAll").permitAll()
                 .antMatchers("/lastSearched/*").permitAll()
                 .antMatchers("/serverGroup/getAll").permitAll()
-                .antMatchers("/checkQueue/search/*").permitAll()
+                .antMatchers("/game/search/*").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic().disable();
 
