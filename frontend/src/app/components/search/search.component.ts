@@ -73,6 +73,7 @@ export class SearchComponent implements OnInit {
   }
 
   processCheckQueue(i: number){
+    console.log(i);
     if(i > 100){
       this.globalService.openSnackBar("Can't get queues for all servers! Try again later!", 5);
       setTimeout(() => {
@@ -81,12 +82,9 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    console.log(this.searchKey);
-
     this.checkQueueService.getCheckQueuesBySearchKey(this.searchKey).subscribe(
       data => {
         this.checkQueues = data;
-
 
         if(this.checkQueues.filter(cq => cq.process == 0 || cq.process == 1).length > 0){
           setTimeout(() => {
@@ -103,5 +101,32 @@ export class SearchComponent implements OnInit {
     return this.checkQueues.filter(cq => (cq.process == 2 || cq.process == 3) && cq.server.id == serverId).length > 0;
   }
 
+  getProcessPositionAndETA(serverId: number){
+    let checkQueue = this.checkQueues.filter(cq => cq.server.id == serverId).pop();
+    if(!checkQueue)
+      return {process: 3, positionIsQueue: -1, ETA: -1};
+
+    return {process: checkQueue.process, positionIsQueue: checkQueue.positionInQueue, eta: checkQueue.eta};
+  }
+
+  covertMillisToMinutesAndSeconds(millis: number): string{
+    let minutes = Math.floor(millis / 60000);
+    let seconds = +((millis % 60000) / 1000).toFixed(0);
+
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
+  convertQueueString(positionInQueue: number | undefined, eta: number | undefined): string{
+    if(!positionInQueue || !eta){
+      return "";
+    }
+
+    if(positionInQueue <= 5){
+      return "Instant";
+    }
+
+    return "Queue: " + positionInQueue + ", ETA: " + this.covertMillisToMinutesAndSeconds(eta) + " minutes";
+
+  }
 
 }

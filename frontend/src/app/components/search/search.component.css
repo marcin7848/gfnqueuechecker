@@ -18,6 +18,30 @@
   margin-left: 5px;
 }
 
+.search-position-instant{
+  color: #00b359;
+}
+
+.search-position-first{
+  color: springgreen;
+}
+
+.search-position-second{
+  color: yellow;
+}
+
+.search-position-third{
+  color: orange;
+}
+
+.search-position-forth{
+  color: #ff4d94;
+}
+
+.search-position-error{
+  color: #1ad1ff;
+}
+
 @media only screen and (max-width: 600px) {
   .search-game-cover-img{
     width: 80px;
