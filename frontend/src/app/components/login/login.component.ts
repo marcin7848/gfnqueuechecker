@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
 
     this.accountService.login(new Account(0, this.username, this.password, 0))
       .subscribe(result => {
-          this.submitted = false;
           this.cookieService.set("Authorization", result['Authorization'], 365, '/');
           this.router.navigate(['/']);
         },
