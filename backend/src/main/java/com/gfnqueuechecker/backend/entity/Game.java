@@ -27,10 +27,10 @@ public class Game {
     @Column(name = "app_id")
     private Long appId;
 
-    @Column(name = "game_name")
+    @Column(name = "game_name", length = 500)
     private String gameName;
 
-    @Column(name = "cover_img")
+    @Column(name = "cover_img", length = 2000)
     private String coverImg;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")

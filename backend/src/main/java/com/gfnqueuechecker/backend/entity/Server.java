@@ -26,7 +26,7 @@ public class Server {
     @NotNull
     private Long id;
 
-    @Column(name = "server_host")
+    @Column(name = "server_host", length = 3000)
     private String serverHost;
 
     @Column(name = "server_name")
