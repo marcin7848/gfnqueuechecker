@@ -11,19 +11,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BackendApplication {
     public static void main(String[] args) {
 
-//        Thread thread = new Thread(() -> {
-//            while(true){
-//                System.out.println("test");
-//                try {
-//                    Thread.sleep(2000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//        thread.start();
+        Thread thread = new Thread(ProcessThreads::lastSearchedThread);
+        thread.start();
+
+        Thread thread2 = new Thread(ProcessThreads::checkQueueThread);
+        thread2.start();
 
         SpringApplication.run(BackendApplication.class, args);
     }
+
+
 
 }
