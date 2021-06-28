@@ -33,6 +33,7 @@ import {CookieService} from "ngx-cookie-service";
 import { LogoutComponent } from './components/logout/logout.component';
 import {Interceptor} from "./app.interceptor";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -86,7 +87,8 @@ const cookieConfig:NgcCookieConsentConfig = {
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatProgressSpinnerModule
     ],
   providers: [CookieService,
     {

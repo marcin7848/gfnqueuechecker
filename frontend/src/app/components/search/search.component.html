@@ -13,4 +13,18 @@
   <span class="search-game-name">{{selectedGame.gameName}}</span>
 </p>
 
-
+<mat-list *ngIf="selectedGame">
+  <ng-container *ngFor="let serverGroup of serverGroups">
+    <mat-list-item>{{serverGroup.serverGroupName}}</mat-list-item>
+    <mat-list style="margin-left:30px;">
+      <div *ngFor="let server of serverGroup.servers">
+        <mat-list-item>{{ server.serverName }}
+          <mat-progress-spinner matSuffix class="search-spinner" color="warn" mode="indeterminate"
+                                diameter="20">
+          </mat-progress-spinner>
+        </mat-list-item>
+      </div>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

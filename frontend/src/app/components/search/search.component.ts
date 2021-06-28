@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../model/Game";
+import {ServerGroup} from "../../model/ServerGroup";
+import {ServerGroupService} from "../../services/server-group.service";
+import {CheckQueueService} from "../../services/check-queue.service";
+import {SearchKey} from "../../model/SearchKey";
+import {GlobalService} from "../../global/global.service";
 
 @Component({
   selector: 'app-search',
@@ -13,8 +18,11 @@ export class SearchComponent implements OnInit {
   appId: number;
   games: Game[] = [];
   selectedGame: Game | undefined;
+  serverGroups: ServerGroup[] = [];
+  searchKey: string = "";
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private serverGroupService: ServerGroupService,
+              private checkQueueService: CheckQueueService, private globalService: GlobalService) { }
 
   ngOnInit(): void {
 
@@ -37,6 +45,25 @@ export class SearchComponent implements OnInit {
 
   selectedGameName(gameName: string){
     this.selectedGame = this.games.filter(g => g.gameName == gameName).pop();
-    console.log(this.selectedGame);
+    if(!this.selectedGame)
+      return;
+
+    this.serverGroupService.getAll()
+      .subscribe(
+        data => {
+          this.serverGroups = data;
+        },
+        error => {
+        });
+
+    this.checkQueueService.generateCheckQueue(this.selectedGame.id).subscribe(
+      data => {
+        this.searchKey = data.SearchKey;
+
+
+      },
+      error => {
+        this.globalService.openSnackBar("Error! " + error["error"]["error"], 5);
+      });
   }
 }
