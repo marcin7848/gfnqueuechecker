@@ -5,6 +5,8 @@ import com.gfnqueuechecker.backend.repository.ServerGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServerGroupService {
 
@@ -15,7 +17,7 @@ public class ServerGroupService {
         this.serverGroupRepository = serverGroupRepository;
     }
 
-    public Iterable<ServerGroup> getAll(){
+    public List<ServerGroup> getAll(){
         return serverGroupRepository.findAll();
     }
 

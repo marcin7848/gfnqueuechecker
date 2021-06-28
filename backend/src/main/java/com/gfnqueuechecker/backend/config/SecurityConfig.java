@@ -32,9 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/lastSearched/*").permitAll()
                 .antMatchers("/serverGroup/getAll").permitAll()
                 .antMatchers("/game/search/*").permitAll()
+                .antMatchers("/checkQueue/generate/game/*").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic().disable();
-
     }
 
     @Bean

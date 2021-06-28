@@ -31,9 +31,6 @@ public class CheckQueue {
     @Column(name = "add_time")
     private Timestamp addTime;
 
-    @Column(name = "role")
-    private Long role;
-
     @Column(name = "process")
     private Long process;
 
