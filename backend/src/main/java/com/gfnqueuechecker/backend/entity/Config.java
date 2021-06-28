@@ -26,7 +26,7 @@ public class Config {
     @Column(name = "config_name")
     private String configName;
 
-    @Column(name = "config_value")
+    @Column(name = "config_value", length = 3000)
     private String configValue;
 
 }
