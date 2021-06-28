@@ -7,3 +7,10 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<p *ngIf="selectedGame">
+  <img mat-list-avatar src="{{selectedGame.coverImg}}" alt="" class="search-game-cover-img">
+  <span class="search-game-name">{{selectedGame.gameName}}</span>
+</p>
+
+

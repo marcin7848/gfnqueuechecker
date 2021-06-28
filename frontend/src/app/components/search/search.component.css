@@ -1,3 +1,29 @@
 .game-name-field{
   width: 100%;
 }
+
+.search-game-cover-img{
+  width: 200px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.search-game-name{
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-game-cover-img{
+    width: 80px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .search-game-name{
+    font-size: 15px;
+    margin-left: 4px;
+  }
+}

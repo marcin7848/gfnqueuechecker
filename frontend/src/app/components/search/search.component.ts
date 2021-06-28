@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit {
   searchGameName: string = "";
   appId: number;
   games: Game[] = [];
+  selectedGame: Game | undefined;
 
   constructor(private gameService: GameService) { }
 
@@ -35,7 +36,7 @@ export class SearchComponent implements OnInit {
   }
 
   selectedGameName(gameName: string){
-    let selectedGame = this.games.filter(g => g.gameName == gameName).pop();
-    console.log(selectedGame);
+    this.selectedGame = this.games.filter(g => g.gameName == gameName).pop();
+    console.log(this.selectedGame);
   }
 }
