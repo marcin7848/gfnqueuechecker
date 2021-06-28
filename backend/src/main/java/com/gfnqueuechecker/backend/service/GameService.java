@@ -5,6 +5,8 @@ import com.gfnqueuechecker.backend.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GameService {
 
@@ -35,4 +37,7 @@ public class GameService {
         return this.gameRepository.findById(id).orElse(null);
     }
 
+    public List<Game> getByGameNameContaining(String gameName){
+        return this.gameRepository.findGamesByGameNameContainingIgnoreCase(gameName);
+    }
 }

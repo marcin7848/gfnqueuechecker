@@ -34,12 +34,10 @@ public class Game {
     private String coverImg;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
-    @JsonBackReference
     @JsonIgnore
     private List<LastSearched> lastSearched;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "game")
-    @JsonBackReference
     @JsonIgnore
     private List<CheckQueue> checkQueue;
 }

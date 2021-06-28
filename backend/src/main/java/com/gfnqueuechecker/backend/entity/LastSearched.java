@@ -1,6 +1,7 @@
 package com.gfnqueuechecker.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,7 +35,6 @@ public class LastSearched {
     @JoinColumn(name = "game_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-
     private Game game;
 
 }
