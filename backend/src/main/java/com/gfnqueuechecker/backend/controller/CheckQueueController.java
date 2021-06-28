@@ -46,4 +46,9 @@ public class CheckQueueController {
 
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
+    @GetMapping("/get/searchKey/{searchKey}")
+    public ResponseEntity<?> getBySearchKey(@PathVariable("searchKey") String searchKey){
+        return new ResponseEntity<>(this.checkQueueService.getBySearchKey(searchKey), HttpStatus.OK);
+    }
 }

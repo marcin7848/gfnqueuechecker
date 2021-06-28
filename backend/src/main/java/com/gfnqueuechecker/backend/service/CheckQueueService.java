@@ -51,4 +51,8 @@ public class CheckQueueService {
             sb.append(possibleCharacters.charAt(rnd.nextInt(possibleCharacters.length())));
         return sb.toString();
     }
+
+    public List<CheckQueue> getBySearchKey(String searchKey){
+        return this.checkQueueRepository.findBySearchKey(searchKey);
+    }
 }
