@@ -6,6 +6,7 @@ import {ServerGroupService} from "../../services/server-group.service";
 import {CheckQueueService} from "../../services/check-queue.service";
 import {SearchKey} from "../../model/SearchKey";
 import {GlobalService} from "../../global/global.service";
+import {CheckQueue} from "../../model/CheckQueue";
 
 @Component({
   selector: 'app-search',
@@ -20,6 +21,7 @@ export class SearchComponent implements OnInit {
   selectedGame: Game | undefined;
   serverGroups: ServerGroup[] = [];
   searchKey: string = "";
+  checkQueues: CheckQueue[] = [];
 
   constructor(private gameService: GameService, private serverGroupService: ServerGroupService,
               private checkQueueService: CheckQueueService, private globalService: GlobalService) { }
@@ -59,11 +61,15 @@ export class SearchComponent implements OnInit {
     this.checkQueueService.generateCheckQueue(this.selectedGame.id).subscribe(
       data => {
         this.searchKey = data.SearchKey;
-
+        setTimeout(this.processCheckQueue, 500);
 
       },
       error => {
         this.globalService.openSnackBar("Error! " + error["error"]["error"], 5);
       });
+  }
+
+  processCheckQueue(){
+
   }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class LastSearchedService {
 
-    final LastSearchedRepository lastSearchedRepository;
+    private final LastSearchedRepository lastSearchedRepository;
 
     @Autowired
     public LastSearchedService(LastSearchedRepository lastSearchedRepository) {
@@ -20,6 +20,10 @@ public class LastSearchedService {
 
     public List<LastSearched> getLastSearched(){
         return this.lastSearchedRepository.getAllByOrderBySearchTimeDesc(PageRequest.of(0, 10));
+    }
+
+    public LastSearched addNew(LastSearched lastSearched){
+        return this.lastSearchedRepository.save(lastSearched);
     }
 
 

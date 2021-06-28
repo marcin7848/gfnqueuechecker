@@ -1,6 +1,7 @@
 package com.gfnqueuechecker.backend.service;
 import com.gfnqueuechecker.backend.entity.CheckQueue;
 import com.gfnqueuechecker.backend.entity.Game;
+import com.gfnqueuechecker.backend.entity.LastSearched;
 import com.gfnqueuechecker.backend.entity.ServerGroup;
 import com.gfnqueuechecker.backend.repository.CheckQueueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,15 @@ public class CheckQueueService {
     private final CheckQueueRepository checkQueueRepository;
     private final GameService gameService;
     private final ServerGroupService serverGroupService;
+    private final LastSearchedService lastSearchedService;
 
     @Autowired
     public CheckQueueService(CheckQueueRepository checkQueueRepository, GameService gameService,
-                             ServerGroupService serverGroupService) {
+                             ServerGroupService serverGroupService, LastSearchedService lastSearchedService) {
         this.checkQueueRepository = checkQueueRepository;
         this.gameService = gameService;
         this.serverGroupService = serverGroupService;
+        this.lastSearchedService = lastSearchedService;
     }
 
     public String generateCheckQueue(Game game){
@@ -40,6 +43,8 @@ public class CheckQueueService {
         if(!this.checkQueueRepository.saveAll(checkQueues).iterator().hasNext()){
             return "";
         }
+
+        this.lastSearchedService.addNew(new LastSearched(0L, new Timestamp(System.currentTimeMillis()), game));
 
         return searchKey;
     }
