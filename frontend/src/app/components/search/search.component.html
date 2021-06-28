@@ -1,1 +1,9 @@
-<p>search works!</p>
+<mat-form-field class="game-name-field" appearance="fill">
+  <mat-label>Game name</mat-label>
+  <input matInput type="text" [(ngModel)]="searchGameName" [matAutocomplete]="auto" (input)="valueChanged($event)">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='selectedGameName($event.option.value)'>
+    <mat-option *ngFor="let game of games" [value]="game.gameName">
+      {{game.gameName}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

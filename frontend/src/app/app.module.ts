@@ -32,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import {CookieService} from "ngx-cookie-service";
 import { LogoutComponent } from './components/logout/logout.component';
 import {Interceptor} from "./app.interceptor";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -63,29 +64,30 @@ const cookieConfig:NgcCookieConsentConfig = {
     LoginComponent,
     LogoutComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NgcCookieConsentModule.forRoot(cookieConfig),
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatListModule,
-    MatLineModule,
-    MatCardModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatOptionModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NgcCookieConsentModule.forRoot(cookieConfig),
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatListModule,
+        MatLineModule,
+        MatCardModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatOptionModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatAutocompleteModule
+    ],
   providers: [CookieService,
     {
       provide: HTTP_INTERCEPTORS,
