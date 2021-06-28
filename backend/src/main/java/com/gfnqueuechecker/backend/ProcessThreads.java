@@ -17,12 +17,9 @@ public class ProcessThreads {
     public static void lastSearchedThread(){
         try {
             Statement stmt = connection.createStatement();
-            String sql = "SELECT * FROM last_searched";
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()) {
-                Timestamp timestamp = rs.getTimestamp("game_id");
-                System.out.println();
-            }
+            String sql = "delete from LAST_SEARCHED where LAST_SEARCHED_ID NOT IN " +
+                    "(select LAST_SEARCHED_ID from LAST_SEARCHED order by LAST_SEARCHED_ID desc limit 20);";
+            stmt.executeUpdate(sql);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -35,7 +32,7 @@ public class ProcessThreads {
                         lastSearchedThread();
                     }
                 },
-                5000
+                60000 * 15
         );
     }
 
