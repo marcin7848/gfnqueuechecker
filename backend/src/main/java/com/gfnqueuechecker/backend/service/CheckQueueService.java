@@ -60,4 +60,8 @@ public class CheckQueueService {
     public List<CheckQueue> getBySearchKey(String searchKey){
         return this.checkQueueRepository.findBySearchKey(searchKey);
     }
+
+    public Long countNotFinished(){
+        return this.checkQueueRepository.countByProcessOrProcess(0L, 1L);
+    }
 }

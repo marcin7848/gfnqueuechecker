@@ -7,15 +7,23 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.sql.SQLException;
+
 @SpringBootApplication
 public class BackendApplication {
     public static void main(String[] args) {
 
-        Thread thread = new Thread(ProcessThreads::lastSearchedThread);
-        thread.start();
+        try {
+            ProcessThreads.initialize();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
 
-        Thread thread2 = new Thread(ProcessThreads::checkQueueThread);
+        Thread thread2 = new Thread(ProcessThreads::lastSearchedThread);
         thread2.start();
+
+        Thread thread3 = new Thread(ProcessThreads::checkQueueThread);
+        thread3.start();
 
         SpringApplication.run(BackendApplication.class, args);
     }

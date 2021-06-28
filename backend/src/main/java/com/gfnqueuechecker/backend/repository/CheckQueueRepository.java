@@ -10,5 +10,6 @@ import java.util.List;
 public interface CheckQueueRepository extends CrudRepository<CheckQueue, Long> {
 
     List<CheckQueue> findBySearchKey(String searchKey);
+    Long countByProcessOrProcess(Long process1, Long process2);
 
 }

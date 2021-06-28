@@ -51,4 +51,12 @@ public class CheckQueueController {
     public ResponseEntity<?> getBySearchKey(@PathVariable("searchKey") String searchKey){
         return new ResponseEntity<>(this.checkQueueService.getBySearchKey(searchKey), HttpStatus.OK);
     }
+
+    @GetMapping("/countNotFinished")
+    public ResponseEntity<?> countNotFinished(){
+        Long notFinished = this.checkQueueService.countNotFinished();
+        JSONObject resp = new JSONObject();
+        resp.put("notFinished", notFinished);
+        return new ResponseEntity<>(resp.toString(), HttpStatus.OK);
+    }
 }

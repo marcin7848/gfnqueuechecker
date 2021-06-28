@@ -3,6 +3,7 @@ import {ConfigService} from "../../services/config.service";
 import {Config} from "../../model/Config";
 import {GlobalService} from "../../global/global.service";
 import {Router} from "@angular/router";
+import {CheckQueueService} from "../../services/check-queue.service";
 
 @Component({
   selector: 'app-settings',
@@ -15,8 +16,10 @@ export class SettingsComponent implements OnInit {
   authorizationValue: string = "";
   xDeviceIdValue: string = "";
   submitted = false;
+  notFinished = 0;
 
-  constructor(private configService: ConfigService, private globalService: GlobalService, private router: Router) { }
+  constructor(private configService: ConfigService, private globalService: GlobalService, private router: Router,
+              private checkQueueService: CheckQueueService) { }
 
   ngOnInit(): void {
     if (!this.globalService.isLogged()) {
@@ -29,10 +32,16 @@ export class SettingsComponent implements OnInit {
           this.configs = data;
           this.authorizationValue = this.configs.find(x => x.configName == "Authorization")?.configValue || "";
           this.xDeviceIdValue = this.configs.find(x => x.configName == "X-Device-Id")?.configValue || "";
-
         },
         error => {
+        });
 
+    this.checkQueueService.countNotFinished()
+      .subscribe(
+        data => {
+          this.notFinished = data.notFinished;
+        },
+        error => {
         });
   }
 

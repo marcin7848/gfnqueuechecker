@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SearchKey} from "../model/SearchKey";
 import {CheckQueue} from "../model/CheckQueue";
+import {CheckQueueCountNotFinished} from "../model/CheckQueueCountNotFinished";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class CheckQueueService {
 
   getCheckQueuesBySearchKey(searchKey: string): Observable<CheckQueue[]> {
     return this.http.get<CheckQueue[]>(this.baseHttp + 'get/searchKey/' + searchKey);
+  }
+
+  countNotFinished(): Observable<CheckQueueCountNotFinished> {
+    return this.http.get<CheckQueueCountNotFinished>(this.baseHttp + 'countNotFinished');
   }
 }
